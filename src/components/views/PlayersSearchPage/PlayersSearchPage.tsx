@@ -205,29 +205,17 @@ function PlayersSearchPage(): ReactElement {
             return;
           }
 
-          if (res.data.message === "Request failed with status code 504") {
+          if (
+            res.data.message === "Request failed with status code 504" ||
+            res.data.message === "Request failed with status code 403" ||
+            res.data.message === "Request failed with status code 401"
+          ) {
             setLoadingState(false);
             setToastMessage({
               success: "",
               fail: "소환사의 데이터를 불러오는 데 실패했습니다.",
             });
             return;
-          }
-
-          if (res.data.message === "Request failed with status code 403") {
-            setLoadingState(false);
-            setToastMessage({
-              success: "",
-              fail: "소환사의 데이터를 불러오는 데 실패했습니다.",
-            });
-          }
-
-          if (res.data.message === "Request failed with status code 401") {
-            setLoadingState(false);
-            setToastMessage({
-              success: "",
-              fail: "소환사의 데이터를 불러오는 데 실패했습니다.",
-            });
           }
 
           setUser1data(res.data);
