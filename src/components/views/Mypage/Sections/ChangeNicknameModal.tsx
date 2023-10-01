@@ -11,8 +11,7 @@ interface Props {
   closeModal: Dispatch<SetStateAction<boolean>>;
 }
 
-function ChangeNicknameModal(props: Props): ReactElement {
-  const { closeModal } = props;
+export function ChangeNicknameModal(props: Props): ReactElement {
   const basicModalRef = useRef<HTMLDivElement>(null);
   const inputTag = useRef<HTMLInputElement>(null);
 
@@ -20,7 +19,7 @@ function ChangeNicknameModal(props: Props): ReactElement {
     const basicModal = basicModalRef.current;
     const handleClickOutside = (e: { target: any }) => {
       if (basicModal && !basicModal.contains(e.target)) {
-        closeModal(false);
+        props.closeModal(false);
       }
     };
     window.addEventListener("click", handleClickOutside);
@@ -66,7 +65,7 @@ function ChangeNicknameModal(props: Props): ReactElement {
           },
         })
           .then((res) => {
-            closeModal(false);
+            props.closeModal(false);
           })
           .catch((err) => {
             console.log("error:", err);
@@ -81,7 +80,7 @@ function ChangeNicknameModal(props: Props): ReactElement {
         <div className="modal modal-box change-modal" ref={basicModalRef}>
           <button
             onClick={() => {
-              closeModal(false);
+              props.closeModal(false);
             }}
             className="btn-close"
             type="button"
@@ -93,7 +92,7 @@ function ChangeNicknameModal(props: Props): ReactElement {
           <div className="btn-wrapper">
             <button
               onClick={() => {
-                closeModal(false);
+                props.closeModal(false);
               }}
               type="button"
             >
@@ -108,5 +107,3 @@ function ChangeNicknameModal(props: Props): ReactElement {
     </>
   );
 }
-
-export default ChangeNicknameModal;

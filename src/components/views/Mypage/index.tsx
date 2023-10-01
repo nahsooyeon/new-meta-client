@@ -1,11 +1,14 @@
 import { gql, useQuery } from "@apollo/client";
 import React, { ReactElement, useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
-import PostModal from "./Sections/PostModal";
-import ChangeNicknameModal from "./Sections/ChangeNicknameModal";
-import NewPasswordModal from "./Sections/NewPasswordModal";
-import LeaveModal from "./Sections/LeaveModal";
-import LikePostModal from "./Sections/LikePostModal";
+// import NewPasswordModal from "./Sections/NewPasswordModal";
+import {
+  ChangeNicknameModal,
+  LeaveModal,
+  LikePostModal,
+  PostModal,
+} from "@/components/views/Mypage/Sections";
+import NewPasswordModal from "@/components/views/Mypage/Sections/NewPasswordModal";
 import API from "../../../api";
 
 // interface Props {}

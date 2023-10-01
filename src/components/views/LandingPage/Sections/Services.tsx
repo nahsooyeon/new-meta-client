@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 import React, { ReactElement, useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
-import freljord from "../../../../assets/image/freljord.jpeg";
 import searchPage from "../../../../assets/image/searchpage-resized.gif";
 import champList from "../../../../assets/image/champList.png";
 import champDetail from "../../../../assets/image/champDetail.png";

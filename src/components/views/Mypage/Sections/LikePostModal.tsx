@@ -1,6 +1,5 @@
 /* eslint-disable prefer-destructuring */
 /* eslint-disable react/no-array-index-key */
-import { gql, useMutation, useQuery } from "@apollo/client";
 import axios from "axios";
 import React, {
   Dispatch,
@@ -30,22 +29,21 @@ interface post {
   updatedAt: string;
 }
 
-function LikePostModal(props: Props): ReactElement {
-  const { closeModal, data } = props;
+export const LikePostModal = (props: Props): ReactElement => {
   const [info, setinfo] = useState<any>(null);
-  const [Data, setData] = useState<post>({
-    ...data,
-    play: JSON.parse(data.play),
-    skills: JSON.parse(data.skills),
+  const [Data] = useState<post>({
+    ...props.data,
+    play: JSON.parse(props.data.play),
+    skills: JSON.parse(props.data.skills),
   });
   const basicModalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const run = async () => {
       const champInfo = await axios.get(
-        `${API.championInfo}/${data.champion}.json`
+        `${API.championInfo}/${props.data.champion}.json`
       );
-      const info = champInfo.data.data[data.champion];
+      const info = champInfo.data.data[props.data.champion];
       setinfo(info);
     };
     run();
@@ -53,7 +51,7 @@ function LikePostModal(props: Props): ReactElement {
     const basicModal = basicModalRef.current;
     const handleClickOutside = (e: { target: any }) => {
       if (basicModal && !basicModal.contains(e.target)) {
-        closeModal(false);
+        props.closeModal(false);
       }
     };
     window.addEventListener("click", handleClickOutside);
@@ -72,7 +70,7 @@ function LikePostModal(props: Props): ReactElement {
         <div className="modal modal-box post-modal" ref={basicModalRef}>
           <button
             onClick={() => {
-              closeModal(false);
+              props.closeModal(false);
             }}
             className="btn-close"
             type="button"
@@ -130,6 +128,4 @@ function LikePostModal(props: Props): ReactElement {
       </div>
     </>
   );
-}
-
-export default LikePostModal;
+};
