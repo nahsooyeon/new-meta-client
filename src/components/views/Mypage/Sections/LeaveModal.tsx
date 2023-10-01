@@ -1,12 +1,6 @@
 import { gql, useMutation } from "@apollo/client";
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import React, {
-  Dispatch,
-  ReactElement,
-  SetStateAction,
-  useEffect,
-  useRef,
-} from "react";
+import React, { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import { TokenVar } from "../../../../graphql";
 
 interface Props extends RouteComponentProps {
@@ -14,7 +8,7 @@ interface Props extends RouteComponentProps {
   AccountType: string;
 }
 
-function LeaveModal(props: Props): ReactElement {
+export const LeaveModal = withRouter((props: Props) => {
   const { closeModal, AccountType } = props;
   const basicModalRef = useRef<HTMLDivElement>(null);
   const password = useRef<HTMLInputElement>(null);
@@ -114,6 +108,4 @@ function LeaveModal(props: Props): ReactElement {
       </div>
     </>
   );
-}
-
-export default withRouter(LeaveModal);
+});

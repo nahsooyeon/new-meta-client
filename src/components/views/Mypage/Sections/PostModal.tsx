@@ -29,7 +29,7 @@ interface post {
   updatedAt: string;
 }
 
-function PostModal(props: Props): ReactElement {
+export const PostModal = (props: Props): ReactElement => {
   const { closeModal, data } = props;
   const [info, setinfo] = useState<any>(null);
   const [EditMode, setEditMode] = useState(false);
@@ -396,6 +396,4 @@ function PostModal(props: Props): ReactElement {
       </div>
     </>
   );
-}
-
-export default PostModal;
+};

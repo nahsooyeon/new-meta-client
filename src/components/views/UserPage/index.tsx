@@ -5,7 +5,7 @@ import { gql, useMutation, useQuery } from "@apollo/client";
 import React, { ReactElement, useEffect, useState } from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { GET_CURRENT_USER } from "../../../graphql";
-import LikePostModal from "./Sections/LikePostModal";
+import { LikePostModal } from "@/components/views/Mypage/Sections";
 import API from "../../../api";
 
 interface myInfo {
@@ -87,11 +87,11 @@ const CURRENT_USER = gql`
 `;
 
 function UserPage(props: RouteComponentProps): ReactElement {
-  const { location } = props;
+  const { location, history } = props;
   const { state }: any = location;
 
   if (state === undefined) {
-    props.history.push("/");
+    history.push("/");
   }
 
   // eslint-disable-next-line @typescript-eslint/ban-types

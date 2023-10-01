@@ -28,10 +28,9 @@ interface LeagueInfo {
 
 function WinRateChart(props: Props): ReactElement {
   const { userData } = props;
-  const winRate = (
-    (userData.wins / (userData.wins + userData.losses)) *
-    100
-  ).toFixed(2);
+  const winRate = Number(
+    ((userData.wins / (userData.wins + userData.losses)) * 100).toFixed(2)
+  );
 
   const data = {
     series: [winRate],

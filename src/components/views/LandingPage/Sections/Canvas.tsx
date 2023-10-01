@@ -103,7 +103,7 @@ function Canvas(props: any): ReactElement {
     const onRequestFrame = (): any => {
       return (
         window.requestAnimationFrame ||
-        window.webkitRequestAnimationFrame ||
+        window.requestAnimationFrame ||
         function (callback: TimerHandler) {
           window.setTimeout(callback);
         }
